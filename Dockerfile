@@ -35,6 +35,7 @@ RUN mv so3-* generated
 RUN cd /generated/qemu && ./fetch.sh &&  ./configure --target-list=arm-softmmu,aarch64-softmmu --disable-attr --disable-werror --disable-docs
 ENV PATH="$PATH:/generated/qemu/build"
 # Remove everything except qemu
-RUN cd /generated && rm -rf !(qemu)
+# RUN bash -c "shopt -s extglob && cd /generated && rm -rf !(qemu)"
+RUN find /generated -mindepth 1 -maxdepth 1 -not -name "qemu" -exec rm -rf {} +
 
 WORKDIR so3
