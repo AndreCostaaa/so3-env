@@ -20,7 +20,7 @@ jobs:
         # In case we want to build other images we can add them here
         include:
           - dockerfile: Dockerfile
-            image: ghcr.io/${{ env.REPOSITORY }}
+            image: ghcr.io/andrecostaaa/so3-env
     permissions:
       contents: read
       packages: write
